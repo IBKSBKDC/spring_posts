@@ -20,6 +20,10 @@ public class PostService {
         return postRepository.selectAllPost();
     }
     // 상세 글보기 By ID
+    // 하나만 받아올거기 때문에 list가 아니다.
+    public Post viewPost(long postId){
+        return postRepository.selectPostById(postId);
+    }
 
     // 글 등록
 

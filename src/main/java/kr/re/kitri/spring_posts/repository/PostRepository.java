@@ -17,6 +17,11 @@ public class PostRepository {
         posts.add(new Post(2, "second post", "스프링 멋져요2", 3));
         posts.add(new Post(3, "thrid post", "스프링 멋져요3", 5));
         posts.add(new Post(4, "four post", "스프링 멋져요4", 10));
+        System.out.println("posts = " + posts);
         return posts;
+    }
+
+    public Post selectPostById(long postId) {
+        return new Post(postId, "테스트제목","테스트바디",8);
     }
 }
