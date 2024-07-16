@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
@@ -26,10 +26,20 @@ public class PostService {
     }
 
     // 글 등록
+    public Post registerPost(Post post) {
+        return postRepository.insertPost(post);
+    }
+
+    // 좋아요
+    public Post updateLikesPlusOne(long postId) {
+        return postRepository.updateLikesPulsOne(postId);
+    }
+
+
 
     // 글 수정
 
     // 글 삭제
 
-    // 좋아요
+
 }

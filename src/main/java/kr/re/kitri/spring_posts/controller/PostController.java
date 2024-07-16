@@ -2,9 +2,7 @@ package kr.re.kitri.spring_posts.controller;
 
 import kr.re.kitri.spring_posts.model.Post;
 import kr.re.kitri.spring_posts.service.PostService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +25,19 @@ public class PostController {
     public Post viewPostById(@PathVariable long postId) {
         return postService.viewPost(postId);
     }
+
+    // 글 등록
+    @PostMapping("/posts")
+    public Post addPost(@RequestBody Post post) {
+        return postService.registerPost(post);
+    }
+
+    @PatchMapping("/posts/{postId}/likes")
+    public Post doLike(@PathVariable long postId) {
+        System.out.println("여긴오나?");
+        return postService.updateLikesPlusOne(postId);
+
+    }
+
 
 }
