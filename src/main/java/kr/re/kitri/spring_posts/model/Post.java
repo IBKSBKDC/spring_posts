@@ -1,12 +1,12 @@
 package kr.re.kitri.spring_posts.model;
 
-public class Posts {
+public class Post {
     private long id;
     private String title;
     private String body;
     private int likes;
 
-    public Posts(long id, String title, String body, int likes) {
+    public Post(long id, String title, String body, int likes) {
         this.id = id;
         this.title = title;
         this.body = body;

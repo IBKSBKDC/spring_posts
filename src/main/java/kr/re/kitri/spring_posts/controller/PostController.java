@@ -1,9 +1,11 @@
 package kr.re.kitri.spring_posts.controller;
 
+import kr.re.kitri.spring_posts.model.Post;
 import kr.re.kitri.spring_posts.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class PostController {
@@ -15,7 +17,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String allPosts(){
+    public List<Post> allPosts(){
         return postService.viewAllPosts();
     }
 }
