@@ -17,6 +17,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public List<Post> allPosts(){
+        System.out.println("[allPosts] : " + postService.viewAllPosts());
         return postService.viewAllPosts();
     }
 
@@ -28,8 +29,9 @@ public class PostController {
 
     // 글 등록
     @PostMapping("/posts")
-    public Post addPost(@RequestBody Post post) {
-        return postService.registerPost(post);
+    public void addPost(@RequestBody Post post) {
+        System.out.println("[Controller] : " + post);
+        postService.registerPost(post);
     }
 
     @PatchMapping("/posts/{postId}/likes")

@@ -4,4 +4,26 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.re.kitri.spring_posts.repository.PostRepository">
 
+    <select id="selectAllPost" resultType="kr.re.kitri.spring_posts.model.Post">
+        SELECT id,
+               title,
+               body,
+               likes
+        FROM   post_kdc
+    </select>
+
+    <select id="selectPostById"
+            resultType="kr.re.kitri.spring_posts.model.Post"
+            parameterType="long">
+        SELECT id,
+        title,
+        body,
+        likes
+        FROM   post_kdc
+        WHERE  id = #{postId}
+    </select>
+
+    <insert id="insertPost" parameterType="kr.re.kitri.spring_posts.model.Post">
+        INSERT INTO post_kdc(title,body,likes) VALUES (#{title},#{body},#{likes})
+    </insert>
 </mapper>

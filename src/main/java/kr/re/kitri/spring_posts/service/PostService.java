@@ -26,8 +26,9 @@ public class PostService {
     }
 
     // 글 등록
-    public Post registerPost(Post post) {
-        return postRepository.insertPost(post);
+    public void registerPost(Post post) {
+        //System.out.println("[Service] : " +postRepository.insertPost(post));
+        postRepository.insertPost(post);
     }
 
     // 좋아요
