@@ -2,11 +2,13 @@ package kr.re.kitri.spring_posts.controller;
 
 import kr.re.kitri.spring_posts.model.Post;
 import kr.re.kitri.spring_posts.service.PostService;
+import kr.re.kitri.spring_posts.service.PostServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 public class PostController {
@@ -15,36 +17,30 @@ public class PostController {
 
     private final PostService postService;
 
-    public PostController(PostService postService) {
+    public PostController(PostServiceImpl postService) {
         this.postService = postService;
     }
 
     @GetMapping("/posts")
-    public List<Post> allPosts(){
-        log.info("[allPosts] : " + postService.viewAllPosts());
-        System.out.println("[allPosts] : " + postService.viewAllPosts());
+    public Iterable<Post> allPosts() {
+        log.debug("테스트 합니다. 로깅 좋아요..");
         return postService.viewAllPosts();
     }
 
     // localhost:8080/posts/2
     @GetMapping("/posts/{postId}")
     public Post viewPostById(@PathVariable long postId) {
-        return postService.viewPost(postId);
+        return postService.viewPostById(postId);
     }
 
-    // 글 등록
     @PostMapping("/posts")
-    public void addPost(@RequestBody Post post) {
-        System.out.println("[Controller] : " + post.toString());
-        postService.registerPost(post);
+    public Post addPost(@RequestBody Post post) {
+        return postService.registerPost(post);
     }
 
     @PatchMapping("/posts/{postId}/likes")
-    public Post doLike(@PathVariable long postId) {
-        System.out.println("여긴오나?");
-        return postService.updateLikesPlusOne(postId);
-
+    public void doLike(@PathVariable long postId) {
+        postService.updateLikesPlusOne(postId);
     }
-
 
 }
